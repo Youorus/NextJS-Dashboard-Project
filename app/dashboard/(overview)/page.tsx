@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { lusitana } from "../../ui/fonts";
-import { fetchCardData, fetchLatestInvoices } from "../../lib/data";
+import { fetchCardData } from "../../lib/data";
 import RevenueChart from "../../ui/dashboard/revenue-chart";
 import LatestInvoices from "../../ui/dashboard/latest-invoices";
 import { Card } from "../../ui/dashboard/cards";
