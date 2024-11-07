@@ -1,6 +1,5 @@
 "use server";
 import { sql } from "@vercel/postgres";
-import { data } from "autoprefixer";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -55,6 +54,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
         VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
       `;
   } catch (error) {
+    console.log(error);
     return {
       message: "Database Error: Failed to Create Invoice.",
     };
@@ -93,6 +93,7 @@ export async function updateInvoice(
       WHERE id = ${id}
     `;
   } catch (error) {
+    console.log(error);
     return {
       message: "Database Error: Failed to Update Invoice.",
     };
@@ -108,6 +109,8 @@ export async function deleteInvoice(id: string) {
     return { message: "Delete Invoice" };
     revalidatePath("/dashboard/invoices");
   } catch (error) {
+    console.log(error);
+
     return {
       message: "Database Error: Failed to delete Invoice.",
     };
